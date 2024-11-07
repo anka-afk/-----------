@@ -213,9 +213,22 @@ plt.grid(True, linestyle="--", alpha=0.6)
 plt.tight_layout(rect=[0, 0, 0.85, 1])
 plt.show()
 
-# 输出每个地区的评价结果
-for region, metrics in evaluation_results.items():
-    print(f"{region} - MSE: {metrics['MSE']:.2f}, RMSE: {metrics['RMSE']:.2f}")
+# 输出并保存每个地区的评价结果
+with open("evaluation_results.txt", "w", encoding="utf-8") as f:
+    f.write("各地区GDP预测模型评价指标\n")
+    f.write("=" * 50 + "\n\n")
+
+    for region, metrics in evaluation_results.items():
+        result_text = (
+            f"{region} - MSE: {metrics['MSE']:.2f}, RMSE: {metrics['RMSE']:.2f}"
+        )
+        print(result_text)  # 控制台输出
+        f.write(result_text + "\n")  # 写入文件
+
+    # 可以添加时间戳
+    from datetime import datetime
+
+    f.write(f"\n生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 # 清理临时目录
 shutil.rmtree(temp_dir, ignore_errors=True)

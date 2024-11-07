@@ -4,7 +4,7 @@ from sklearn.linear_model import LassoCV, ElasticNetCV
 from sklearn.preprocessing import StandardScaler
 
 # 加载数据和标准化
-data = pd.read_csv("环杭州湾3.csv", encoding="gbk")
+data = pd.read_csv("3.csv", encoding="gbk")
 X = data.drop(
     columns=["地区生产总值(万元)", "年份", "地区"]
 )  # 删除非数值列（年份和地区）以及目标变量
@@ -38,8 +38,6 @@ combined_features = combined_features.sort_values(
 )
 
 # 保存结果到CSV文件
-combined_features.to_csv(
-    "环杭州湾feature_importance_regularization.csv", encoding="utf-8-sig"
-)
+combined_features.to_csv("feature_importance_regularization.csv", encoding="utf-8-sig")
 print("合并和排序后的特征:\n", combined_features)
-print("\n特征重要性已保存到 '环杭州湾feature_importance_regularization.csv'")
+print("\n特征重要性已保存到 'feature_importance_regularization.csv'")
