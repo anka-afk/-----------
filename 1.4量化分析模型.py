@@ -88,7 +88,6 @@ print(f"平均 RMSE: {np.mean(cv_scores['rmse']):.4f} (±{np.std(cv_scores['rmse
 # 输出模型结果
 print(result.summary())
 
-# 假设 result 是你的回归结果对象
 coefficients = pd.DataFrame(
     {
         "Feature": result.params.index,

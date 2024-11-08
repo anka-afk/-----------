@@ -11,7 +11,7 @@ plt.rcParams["font.sans-serif"] = ["SimHei"]  # 用来正常显示中文标签
 plt.rcParams["axes.unicode_minus"] = False  # 用来正常显示负号
 
 # 加载数据
-data = pd.read_csv("环杭州湾2.csv", encoding="gbk")
+data = pd.read_csv("2.csv", encoding="gbk")
 
 # 分离标识列和数值列
 id_columns = ["年份", "地区"]
@@ -23,7 +23,7 @@ numeric_columns = numeric_data.select_dtypes(include=[np.number]).columns
 # 1. 使用 LOF 识别异常值
 def handle_outliers_lof(df, columns, n_neighbors=20, contamination=0.01):
     # 排除地区生产总值列
-    columns_to_process = [col for col in columns if col != "地区生产总值(万元)"]
+    columns_to_process = [col for col in columns]
 
     lof = LocalOutlierFactor(n_neighbors=n_neighbors, contamination=contamination)
     outliers = lof.fit_predict(df[columns_to_process])
@@ -85,5 +85,5 @@ numeric_data[numeric_columns] = scaler.fit_transform(numeric_data[numeric_column
 final_data = pd.concat([id_data, numeric_data], axis=1)
 
 # 保存最终预处理后的数据
-final_data.to_csv("环杭州湾3.csv", index=False, encoding="gbk")
-print("数据已保存至 '环杭州湾3.csv'")
+final_data.to_csv("3.csv", index=False, encoding="gbk")
+print("数据已保存至 '3.csv'")

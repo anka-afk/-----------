@@ -27,9 +27,9 @@ plt.rcParams["font.sans-serif"] = ["SimHei"]
 plt.rcParams["axes.unicode_minus"] = False
 
 # 数据加载和准备
-data = pd.read_csv("3.csv", encoding="gbk")
+data = pd.read_csv("环杭州湾3.csv", encoding="gbk")
 feature_importance = pd.read_csv(
-    "feature_importance_regularization.csv", index_col=0, encoding="utf-8-sig"
+    "环杭州湾feature_importance_regularization.csv", index_col=0, encoding="utf-8-sig"
 )
 
 # 创建重命名映射字典
